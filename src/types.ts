@@ -7,4 +7,5 @@ export interface IProps {
   fontFamily?: string;
   fontPadding?: number;
   vertical?: boolean;
+  zPadding?: number;
 }

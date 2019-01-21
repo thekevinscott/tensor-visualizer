@@ -11,6 +11,7 @@ const FONT_FAMILY = 'Sofia Pro';
 const FONT_PADDING = 0;
 const ROUGHNESS = 0.7;
 const PADDING = 10;
+const Z_PADDING = 10;
 
 type ITensor = tf.Tensor;
 
@@ -38,6 +39,7 @@ class TensorVisualizer {
   private vertical: boolean;
   private width: number;
   private height: number;
+  private zPadding: number;
 
   constructor(tensor: tf.Tensor, target: HTMLElement, props:IProps) {
     const {
@@ -48,10 +50,12 @@ class TensorVisualizer {
       fontFamily,
       fontPadding,
       vertical,
+      zPadding,
     } = props;
 
     this.width = width;
     this.height = height;
+    this.zPadding = zPadding === undefined ? Z_PADDING : zPadding;
     this.vertical = vertical || false;
     this.roughness = roughness === undefined ? ROUGHNESS : roughness;
     this.fontSize = fontSize === undefined ? FONT_SIZE : fontSize;
@@ -154,12 +158,11 @@ class TensorVisualizer {
   render3DTensor = (tensor: tf.Tensor, props: IRenderTensorProps) => {
     const len = tensor.shape[0] - 1;
     for (let i = len; i >= 0; i--) {
-      const zPadding = 10;
-      const sizePadding = zPadding * len;
+      const sizePadding = this.zPadding * len;
       this.render2DTensor(tensor.slice(i, 1).squeeze(), {
         ...props,
-        x: props.x + (zPadding * i),
-        y: props.y + (zPadding * (len - i)),
+        x: props.x + (this.zPadding * i),
+        y: props.y + (this.zPadding * (len - i)),
         width: props.width - sizePadding,
         height: props.height - sizePadding,
       });
