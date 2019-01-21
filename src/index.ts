@@ -89,7 +89,6 @@ class TensorVisualizer {
 
   renderTensor = (tensor: ITensor, props: IRenderTensorProps) => {
     const rank = Number(tensor.rankType);
-    console.log(tensor.shape);
 
     if (tensor.shape.length === 1) {
       return this.render1DTensor(tensor, props);
@@ -128,8 +127,6 @@ class TensorVisualizer {
     width,
     height,
   }: IRenderTensorProps) => {
-    // width = 540;
-    // console.log(width);
     const shape = tensor.shape[0];
     for (let i = 0; i < tensor.shape[0]; i++) {
       const sectionSize = height / shape;
