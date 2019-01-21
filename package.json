@@ -1,0 +1,37 @@
+{
+  "name": "tensor-visualizer",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "repository": "https://github.com/thekevinscott/tensor-visualizer",
+  "homepage": "https://thekevinscott.github.io/tensor-visualizer",
+  "scripts": {
+    "example:clear": "rimraf example/build",
+    "example:develop": "npm run example:clear && parcel example/index.html -d example/build --public-url /tensor-visualizer/",
+    "example:build": "npm run example:clear && parcel build example/index.html -d example/build --public-url /tensor-visualizer/",
+    "deploy": "npm run example:build && gh-pages -d example/build",
+    "prepublish": "yarn build",
+    "build": "rollup -c rollup.config.js",
+    "develop": "rollup -c rollup.config.js -w",
+    "test": "jest --watchAll"
+  },
+  "author": "Kevin Scott <kevin@hitheory.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "gh-pages": "^2.0.1",
+    "parcel": "^1.10.3",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.67.4",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-typescript": "^1.0.0",
+    "tslib": "^1.9.3",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^0.14.2",
+    "roughjs": "^2.2.5"
+  }
+}
