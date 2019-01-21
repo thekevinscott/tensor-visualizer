@@ -1,12 +1,5 @@
 import TensorVisualizer from '../dist';
 import * as tf from '@tensorflow/tfjs';
-window.tf = tf;
-const Color = require('color');
-
-export const COLORS = [
-  Color.hsl([199, 100, 57]),
-  Color.hsl([33, 100, 50]),
-];
 
 const attach = (id, tensor, props = {}) => {
   const root = document.getElementById(id);
@@ -18,6 +11,7 @@ const attach = (id, tensor, props = {}) => {
     width: 420,
     height: 420,
     vertical: true,
+    fontFamily: 'Sofia Pro',
     ...props,
   });
 };
