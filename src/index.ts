@@ -213,8 +213,8 @@ class TensorVisualizer {
   }: IRenderTensorProps) => {
     const len = tensor.shape[0] - 1;
     const padding = 10;
-    const totalPadding = padding * (tensor.shape[0] - 1);
     const shape = tensor.shape[0];
+    const totalPadding = padding * (shape - 1);
     if (this.vertical) {
       width += padding;
       for (let i = 0; i < shape; i++) {
